@@ -4,19 +4,18 @@ import { useAuth } from '../context/AuthContext';
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
-
   return (
-    <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
-      <Link to="/" className="text-2xl font-bold">Your apps name</Link>
+    <nav className="bg-purple-700 text-white p-4 flex justify-between items-center">
+      <Link to="/" className="text-2xl font-bold">🎵 Onlystans</Link>
       <div>
         {user ? (
           <>
-            <Link to="/tasks" className="mr-4">CRUD</Link>
+            <Link to="/fanclubs" className="mr-4">Fan Clubs</Link>
+            <Link to="/tasks" className="mr-4">Tasks</Link>
             <Link to="/profile" className="mr-4">Profile</Link>
             <button
               onClick={handleLogout}
@@ -40,5 +39,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
