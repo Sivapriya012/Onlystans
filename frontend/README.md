@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+Onlystans - Music Artists Fan Club Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application for music artist fan clubs, built with Node.js, React.js, and MongoDB.
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+Onlystans allows users to browse and join fan clubs, create and manage posts within them, and interact with other fans through likes and comments.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend:** React.js, Tailwind CSS, Axios
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **Authentication:** JWT (JSON Web Tokens)
+- **Deployment:** AWS EC2
+- **CI/CD:** GitHub Actions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Setup Instructions
 
-### `npm test`
+### Prerequisites
+- Node.js v18+
+- npm
+- MongoDB Atlas account
+- Git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone the repository
+```bash
+git clone https://github.com/Sivapriya012/Onlystans.git
+cd Onlystans
+```
 
-### `npm run build`
+### 2. Install dependencies
+```bash
+# Install root dependencies
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Install backend dependencies
+cd backend
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Configure environment variables
+Create a `.env` file in the `backend/` folder:
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5001
 
-### `npm run eject`
+### 4. Run the application
+```bash
+# From root folder - runs both frontend and backend
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Frontend: http://localhost:3000
+- Backend: http://localhost:5001
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##  Public URL
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+http://3.107.188.185:3000
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##  Test Credentials
 
-## Learn More
+| Role | Email | Password |
+|------|-------|----------|
+| User | test@test.com | test1234 |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+##  Project Structure
+Onlystans/
+├── backend/
+│   ├── config/         # Database configuration
+│   ├── controllers/    # Route handlers
+│   ├── middleware/     # JWT authentication
+│   ├── models/         # Mongoose schemas
+│   ├── routes/         # API routes
+│   └── server.js       # Entry point
+├── frontend/
+│   ├── src/
+│   │   ├── components/ # Reusable UI components
+│   │   ├── context/    # Auth context
+│   │   ├── pages/      # Application pages
+│   │   └── App.js      # Root component
+└── .github/
+└── workflows/
+└── ci.yml      # CI/CD pipeline
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##  API Endpoints
 
-### Code Splitting
+### Authentication
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/auth/register | Register new user |
+| POST | /api/auth/login | Login user |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Fan Clubs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/fanclubs | Get all fan clubs |
+| POST | /api/fanclubs | Create fan club |
+| PUT | /api/fanclubs/:id | Update fan club |
+| DELETE | /api/fanclubs/:id | Delete fan club |
 
-### Analyzing the Bundle Size
+### Posts
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/posts/fanclub/:id | Get posts by fan club |
+| POST | /api/posts | Create post |
+| PUT | /api/posts/:id | Update post |
+| DELETE | /api/posts/:id | Delete post |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Comments
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/comments/post/:id | Get comments by post |
+| POST | /api/comments | Create comment |
+| PUT | /api/comments/:id | Update comment |
+| DELETE | /api/comments/:id | Delete comment |
 
-### Making a Progressive Web App
+##  CI/CD Pipeline
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+GitHub Actions automatically:
+1. Installs backend dependencies
+2. Installs frontend dependencies
+3. Builds the frontend
+4. Deploys to AWS EC2 on push to main
 
-### Advanced Configuration
+##  Developer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Sivapriya Punnasseril**
+Student ID: N12258041
+QUT - IFN636
